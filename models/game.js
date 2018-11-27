@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 
 const gameSchema = new mongoose.Schema({
   player1: { type: String, required: true },
-  p1Points: { type: String, required: true },
+  p1Points: { type: Number, required: true },
   player2: { type: String, required: true },
-  p2Points: { type: String, required: true },
+  p2Points: { type: Number, required: true },
   year: { type: Number, required: true }
 });
 
