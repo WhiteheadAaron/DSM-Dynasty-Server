@@ -5,21 +5,23 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "mocha": "mocha --exit --file test/setup.test.js '!(node_modules)/**/*test.js'",
-    "mocha-exit0": "mocha --exit --file test/setup.test.js '!(node_modules)/**/*test.js' || true",
-    "test": "nodemon --exec npm run mocha-exit0",
+    "mocha": "mocha --exit --file test/setup.test.js --timeout 5000",
+    "mocha-exit0": "mocha --exit --file test/setup.test.js",
+    "test": "cross-env NODE_ENV=test mocha --timeout 20000",
     "cover": "nodemon --exec nyc --reporter=lcov --reporter=text-summary npm run mocha-exit0",
-    "heroku": "node index.js",
-    "travis": "npm run mocha"
+    "heroku": "node index.js"
   },
   "author": "Joe Turner <jturner@thinkful.com>",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.4",
+    "cross-env": "^5.2.0",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
-    "knex": "^0.15.2",
+    "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.2.6",
-    "morgan": "^1.9.0",
+    "morgan": "^1.9.1",
     "pg": "^7.4.3"
   },
   "devDependencies": {
